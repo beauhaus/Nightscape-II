@@ -1,0 +1,14 @@
+[
+    {
+    "id": "100",
+    "qPrompt": "Randomly Determined",
+    "options": [
+    "polyvalent",
+    "anomolous",
+    "deterministic",
+    "stochastic"
+    ],
+    "hint": "Having a random probability distribution or pattern that may be analyzed statistically but may not be predicted precisely.",
+    "answer": "stochastic"
+    }
+]

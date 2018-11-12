@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,200,300,400|Mali');
+/* font-family: 'Mali', cursive; */
+/* font-family: 'Lato', cursive; */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 62.5%;
+  }
+  
+  body {
+    font-size: 1.6rem;
+    font-family: 'Lato', cursive;
+    font-weight: 100;
+    text-align: center;
+    background: linear-gradient(35deg, #2e2b2b 0%, #413d3d 100%);
+    /* color: aliceblue; */
+    height: 100vh;
+    width: 100vw;
+}
+
+h1, h2 {
+    font-weight: 300;
+    font-size: 4rem;
+}
+
+h1#app-title {
+    font-family: "Lato", sans-serif;
+    letter-spacing: 1.5vw;
+    font-weight: 100;
+    color: #999;
+}
+.app-wrapper {
+    height: 100%;
+    width: 100%;
+    /* color: rgba(255, 255, 255, 0.5); */
+}
+
+/**THINGS**/
+
+/*
+thig-track=>ThingCar=>thing-container=>thing-elem
+
+*/
+
+.things-strip-comp {
+  height: 250px;
+  width: 100vw;
+  border: 1px solid red;
+  position: relative;
+}
+
+.thing-container {
+  height: 250px;
+  width: 80vw;
+  overflow: hidden;
+  /* border: 1px solid teal; */
+  position: absolute;
+  top: 0;
+  left: -20vw;
+
+
+}
+.thing-track-wrapper {
+  height: 250px;
+  width: 100vw;
+  border: 1px solid grey;
+  position: relative;
+}
+.thing-car {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* filter: url(#filter); */
+  height: 1px;
+  width: 80vw;
+  /* inner fog element */
+  /* transform: translate(12px, -80px); */
+  border: 1px solid fuchsia;
+  /* box-shadow:  80px 165px 45px 40px #b9d9ff; */
+}
+
+/*mapped containers*/
+#thing-101 {
+  /* border: 1px solid blue; */
+  /* transform:  scale3d(2, 1, 1); */
+
+      /* transform: rotateZ(10deg); */
+
+  /* transform: rotate3d(0, 0, 1, 90deg); */
+}
+#thing-102 {
+  border: 1px solid orange;
+      /* transform: rotateZ(900deg); */
+
+  /* transform: rotate3d(0, 0, 1, 180deg); */
+
+}
+#thing-103 {
+  /* transform: rotate3d(0, 0, 1, 270deg); */
+  border: 1px solid green;
+      /* transform: rotateZ(220deg); */
+
+}
+#thing-104 {
+  /* transform: rotate3d(0, 0, 1, 180deg); */
+  border: 1px solid brown;
+      /* transform: rotateZ(120deg); */
+
+}
+#thing-105 {
+  /* transform: rotate3d(0, 0, 1, 330deg); */
+  border: 1px solid black;
+  /* transform:rotateZ(10deg); */
+}
+
+/***************************FOG**********************/
+/*
+@keyframes fwd {
+  0% {
+    transform: translate3d(0vw, 0px, 0px);
+   
+  }
+  100% { 
+    transform: translate3d(110vw, 0px, 0px);
+  }
+}
+    
+  @keyframes spread {
+    0% {
+      transform:  scale3d(1, 1, 1);
+    }
+    50% {
+      transform:  scale3d(10, 1, 1);
+    }
+    100% {
+      transform:  scale3d(1, 1, 1);
+    }
+  }
+  */
