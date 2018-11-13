@@ -1,18 +1,95 @@
 import React, {Component} from "react";
-import {Power1, TimelineLite} from "gsap";
+import { TimelineMax} from "gsap";
 import styled from 'styled-components';
+import Stars from './Stars.js';
 
 
+// console.log("stars: ", Stars)
 const random = (min, max) =>{
   if (max == null) { max = min; min = 0; }
   if (min > max) { var tmp = min; min = max; max = tmp; }
   return min + (max - min) * Math.random();
 }
 
+/*
+<div id="cloud" style="border: 1px solid coral; box-shadow: rgb(51, 171, 250) 52vw 31vh 36vmin 12vmin;"></div>
+*/
+
 const MtnHighwayDiv = styled.div`
-  .visnone {
-    // display: none;
+.mtns {
+  /* opacity: 0.2; */
+}
+.mtns-level-1{
+  /* opacity: 0.3; */
+}
+  #cloud-filter , .cloud-filter-container {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
+  .connect-moon {
+    position: absolute;
+    top: 8vh;
+    left: 0;
+  }
+  .cloud-wrapper {
+    transform-origin: 50% 50%;
+    position: absolute;
+    top: 0;
+    width: 50vw;
+    height: 50vh;
+  }
+  .cloud-wrapper-A {
+    left: 10vw;
+    transform: rotateZ(-15deg);
+  }
+  .cloud-wrapper-B {
+    left: 35vw;
+  }
+  .cloud-wrapper-C {
+    left: 75vw;
+    top: 5vh;
+  }
+
+.cumulus {
+  overflow: hidden;
+  width: 200px;
+  height: 25px;
+  position: absolute;
+  top: -30vh;
+  left: -50vw;
+  filter: url(#cloud-filter);
+}
+
+#cloud1 {
+  box-shadow: 52vw 31vh 30vmin 12vmin rgba(255,255,255,0.9);;
+}
+#cloud2 {
+  box-shadow: 52vw 31vh 10vmin 10vmin rgba(0,0,0,0.9);
+}
+
+#cloud3 {
+  width: 50px;
+  height: 1px;
+  top: -25vh;
+  
+  box-shadow: 52vw 31vh 20vmin 12vmin rgba(255,255,255,0.9);;
+
+}
+#cloud4 {
+  width: 50px;
+  height: 1px;
+  top: -25vh;
+  box-shadow: 52vw 31vh 10vmin 8vmin rgba(0,0,0,0.7);
+}
+#cloud5 {
+  width: 20px;
+  height: 1px;
+  top: -25vh;
+  left: -50vw;
+  box-shadow: 52vw 31vh 15vmin 5vmin rgba(255,255,255,0.9);
+}
+
   position: absolute;
   top: 0;
   left: 0;
@@ -25,10 +102,6 @@ const MtnHighwayDiv = styled.div`
   grid-template-columns: 25vw 50vw 25vw;
   grid-template-rows: 20vh 60vh 20vh;
   z-index: 1;
-  & #bg {
-
-    fill: url(#bg-grad);
-  }
    .car-element {
     filter: url(#car-blur);
     position: absolute;
@@ -46,7 +119,7 @@ class MtnHighway extends Component {
     this.rightboundCarsDB = this.props.rightboundCarsDB;
     this.leftboundCarsDB = this.props.leftboundCarsDB;
     
-    console.log("t.p> MtnHighway ", this.props)
+    // console.log("t.p> MtnHighway ", this.props)
     this.myRightboundCars = [];
     this.myLeftboundCars = [];
   }
@@ -54,7 +127,7 @@ class MtnHighway extends Component {
   createRightboundAnimation(tl, target) {
     const start = random(2);
     tl.set(target, { x: 0 })
-      .to(target, random(30, 100), { x: '120vw', ease: Power0.easeNone }, start)
+      .to(target, random(80, 160), { x: '120vw', ease: Power0.easeNone }, start)
     
     if (tl.data.firstRun) {
       tl.data.firstRun = false;
@@ -66,7 +139,7 @@ class MtnHighway extends Component {
   createLeftboundAnimation(tl, target) {
     const start = random(2);
     tl.set(target, { x: '120vw' })
-      .to(target, random(30, 100), { x: '-20vw', ease: Power0.easeNone }, start)
+      .to(target, random(80, 160), { x: '-20vw', ease: Power0.easeNone }, start)
     
     if (tl.data.firstRun) {
       tl.data.firstRun = false;
@@ -112,35 +185,70 @@ class MtnHighway extends Component {
 
   render() {
 const {rightboundCarsDB, leftboundCarsDB} = this;
-console.log("l: ", leftboundCarsDB)
+
     return (
-      <MtnHighwayDiv className="mtn-highway" xlinkHref="http://www.w3.org/2000/svg">
-        <svg width="1440px" height="900px">
+      <MtnHighwayDiv className="mtn-highway">
+  
+      {/**
+  */}
+      <svg className="connect-moon" xmlns="http://www.w3.org/2000/svg" viewBox="00 -40 2040 1000" >
+    <linearGradient id="z" x1="337.6553" x2="442.4339" y1="107.0879" y2="197.0022" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stopColor="#f8733e"/>
+    <stop offset=".6" stopColor="#9b6527"stopOpacity=".4"/>
+    <stop offset=".7" stopColor="#9b6527"stopOpacity=".3"/>
+    <stop offset=".75" stopColor="#9b6527" stopOpacity=".25"/>
+    <stop offset=".85" stopColor="#9b6527" stopOpacity="0"/>
+    </linearGradient>
+    <filter id="moonBlur" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="25" />
+  </filter>
 
-        <linearGradient id="a" x1="344.6445" x2="1094.3564" y1="-198.7695" y2="1099.7697" gradientUnits="userSpaceOnUse">
-        <stop offset="0"/>
-        <stop offset=".2073" stopColor="#030303"/>
-        <stop offset=".3594" stopColor="#0c0c0c"/>
-        <stop offset=".4939" stopColor="#1c1c1c"/>
-        <stop offset=".6182" stopColor="#333"/>
-        <stop offset=".7355" stopColor="#505050"/>
-        <stop offset=".8476" stopColor="#747474"/>
-        <stop offset=".9536" stopColor="#9d9d9d"/>
-        <stop offset="1" stopColor="#b2b2b2"/>
+    <circle cx="383" cy="146" r="102" fill="none" strokeWidth="24" stroke="#fde5c8" filter="url(#moonBlur)" />
+    <circle cx="383" cy="146" r="69" fill="url(#z)" />
+</svg>
+  
+
+
+        <svg width="0" className="cloud-filter-container">
+          <filter id="cloud-filter">
+            <feTurbulence type="fractalNoise" baseFrequency=".01" numOctaves="15" />
+            <feDisplacementMap in="SourceGraphic" scale="240" />
+          </filter>
+        </svg>
+        <div className="cloud-wrapper cloud-wrapper-A">
+          <div id="cloud1" className="cumulus"></div>
+          <div id="cloud2" className="cumulus"></div>
+        </div>
+        <div className="cloud-wrapper cloud-wrapper-B">
+          <div id="cloud3" className="cumulus"></div>
+          <div id="cloud4" className="cumulus"></div>
+        </div>
+        <div className="cloud-wrapper cloud-wrapper-C">
+          <div id="cloud5" className="cumulus"></div>
+        </div>
+
+
+        <svg width="1440px" height="900px"  xlinkHref="http://www.w3.org/2000/svg">
+          <linearGradient id="bg-grad" x1="1440" x2="0" y1="900" y2="40" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor="#333" />
+            <stop offset="0.4" stopColor="#2a2a2a" />
+
+            <stop offset="1" stopColor="#000" />/>
       </linearGradient>
-      <path fill="url(#a)" stroke="#002036" d="M-.5.5h1440v900H-.5z"/>
+      <path  className="bg" fill="url(#bg-grad)"  stroke="#b2b2b2" d="M-.5.5h1440v900H-.5z"/>
+      <Stars/>    
 
-          <g className="mtns visnone">
+          <g className="mtns">
 
             <g className="mtns-level-1">
               <linearGradient id="mtns-level-1a-grad" x1="870.9072" x2="1204.2031" y1="699.8042" y2="699.8042" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="#555" />
-                <stop offset="1" stopColor="#aaa" />
+                <stop offset="0" stopColor="#222" />
+                <stop offset="1" stopColor="#444" />
               </linearGradient>
 
               <linearGradient id="mtns-level-1b-grad" x1="1062.0234" x2="1534.3312" y1="610.3169" y2="667.5795" gradientTransform="matrix(1.138 -.138 -.138 1.138 -126.4939 126.4939)" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stopColor="#555" />
-              <stop offset="1" stopColor="#aaa" />
+              <stop offset="0" stopColor="#333" />
+              <stop offset="1" stopColor="#444" />
             </linearGradient>
 
               <path fill="url(#mtns-level-1a-grad)" d="M1025.1 866.5L870.9 712.2l179.1-179 154.2 154.2z" />
@@ -265,26 +373,28 @@ console.log("l: ", leftboundCarsDB)
           </g>
 
 
-          <g className="evergreen-back visnone">
+          <g className="evergreen-back">
             <path d="M1071.8 717l-4.8-35.3-4.7 35.3zM990.4 713l-4.6-32.9-4.5 32.9zM933.1 720l2.7-32.9 2.7 32.9zM1256.9 715l-7.2-46-7.1 46zM1165.2 718l-4.6-32.9-4.5 32.9zM1433 707l-6.3-41.1-6.4 41.1zM1228.3 709l-4-29.4-4.1 29.4zM1337.4 714l-4-29.4-4.1 29.4z" />
           </g>
 
+          <path className="lit-highway" fill="none" stroke="#ddd" strokeWidth="0.5" d="M720 715.5h728"/>
 
 
           <g className="cars-collection">
 
             <g className="right-bound-cars">
-              <linearGradient id="car-grad" x1="-70" x2="-4" y1="714.5" y2="714.5" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="#ed1c24" stopOpacity="0" />
-                <stop offset=".01996289" stopColor="#ed1c24" stopOpacity=".1292" />
-                <stop offset=".1545" stopColor="#ed1c24" />
-                <stop offset=".4261" stopColor="#fff" />
-                <stop offset=".6652" stopColor="#fbd23b" />
-                <stop offset=".8492" stopColor="#fbd03b" stopOpacity=".4503" />
-                <stop offset=".9179" stopColor="#fbc93b" stopOpacity=".2452" />
-                <stop offset=".9671" stopColor="#fbbd3b" stopOpacity=".09833789" />
-                <stop offset="1" stopColor="#fbb03b" stopOpacity="0" />
-              </linearGradient>
+            <linearGradient id="car-grad-right" x1="-70" x2="-4" y1="714.5" y2="714.5" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor="#ed1c24" stopOpacity="0" />
+            <stop offset=".1" stopColor="#ed1c24" stopOpacity=".1292" />
+            <stop offset=".3" stopColor="#fff" />
+            <stop offset="1" stopColor="#ffecce" stopOpacity=".1" />
+          </linearGradient>
+          <linearGradient id="car-grad-left" x1="-70" x2="-4" y1="714.5" y2="714.5" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#ffecce" stopOpacity=".1" />
+          <stop offset=".7" stopColor="#fff" />
+          <stop offset=".9" stopColor="#ed1c24" stopOpacity=".1292" />
+          <stop offset="1" stopColor="#ed1c24" stopOpacity="0" />
+        </linearGradient>
 
               {rightboundCarsDB.map((item, idx) => (
                 <rect key={item.id}
@@ -303,7 +413,7 @@ console.log("l: ", leftboundCarsDB)
                   // x={`${item.x}`}
                   // y={`${item.y}`}
 
-                  fill="url(#car-grad)"
+                  fill="url(#car-grad-right)"
                 />
               ))}
             </g>
@@ -322,7 +432,7 @@ console.log("l: ", leftboundCarsDB)
                   x={`${item.x}`}
                   y={`${item.y}`}
 
-                  fill="url(#car-grad)"
+                  fill="url(#car-grad-left)"
                 />
 
               ))}
@@ -331,24 +441,28 @@ console.log("l: ", leftboundCarsDB)
           </g>
 
 
-          <g id="evergreen-front visnone">
+          <g id="evergreen-front ">
             <path d="M1385.2 718l-4.9-32.9-4.8 32.9zM829.4 718l4.4-26.2 4.3 26.2zM927.5 723l4.3-26.2 4.3 26.2zM1270.1 716l-4.3-29.4-4.3 29.4zM800.5 722l4.3-26.2 4.3 26.2zM1100.5 722l4.3-26.2 4.3 26.2z" />
           </g>
 
-          <g className="bridge-spire visnone">
+          <g className="bridge-spire ">
             <linearGradient id="x" x1="592.501" x2="592.501" y1="718.5" y2="664.3552" gradientUnits="userSpaceOnUse">
               <stop offset="0" stopColor="#1a1a1a" stopOpacity="0" />
+              <stop offset=".2" stopColor="#222" stopOpacity=".5" />
               <stop offset="1" stopColor="#333" stopOpacity=".5" />
             </linearGradient>
+            <filter id="lightBlur">
+            <feGaussianBlur in="SourceGraphic" stdDeviation=".5" />
+          </filter>
             <path id="bridge-spire" fill="url(#x)" d="M647.2 718.5l-54.7 54.7-54.7-54.7 54.7-54.7z" />
             <path stroke="#000" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="2.75" d="M593.2 664.6l8.8 72.6" />
             <path stroke="#000" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="2.75" d="M592.9 664.3l-10.2 72.6" />
-            <path id="bridge-spire-light" fill="#FF1717" stroke="red" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M591.5 662.5h2v2h-2z" />
+            <path id="bridge-spire-light" fill="rgba(255,255,255,0.9);" stroke="red"  strokeLinecap="round" strokeLinejoin="round"  d="M591.5 662.5h2v2h-2z" filter="url(#lightBlur)"/>
           </g>
 
 
 
-          <g id="bridge" className="visnone">
+          <g id="bridge" >
             <path id="bridge-structure" stroke="#000" d="M567.1 715.8c-13.5 0-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.8-24.7-6.8s-24.4 3-24.7 6.7l.5-6.9h786.8l-.4 6.9c-.3-3.7-11.2-6.6-24.7-6.6s-24.4 2.8-24.7 6.8h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7" />
             <g id="bridge-lights" fill="#E7EC00" stroke="#48FF21" strokeWidth="1.4314">
               <path d="M591.6 715v2zM50.7 715v2zM2.5 715v2zM99.9 715v2zM149 715v2zM198.2 715v2zM247.4 715v2zM296.6 715v2zM345.7 715v2zM394.9 715v2zM640.8 715v2zM690 715v2zM739.1 715v2zM788.3 715v2zM444.1 715v2zM493.3 715v2zM542.4 715v2z" />
@@ -356,9 +470,9 @@ console.log("l: ", leftboundCarsDB)
           </g>
 
 
-          <path className="visnone" id="water" fill="#707070" d="M0 720h1440v180H0z" />
+          <path  id="water" fill="#707070" d="M0 720h1440v180H0z" />
 
-          <g className="visnone">
+          <g >
             <path stroke="#000" d="M298 1124.5h786.8l-.4 6.9c-.3-3.7-11.2-6.6-24.7-6.6s-24.4 2.8-24.7 6.8h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.8-24.7-6.8s-24.4 3-24.7 6.7l2.5-7z" />
             <g fill="red" stroke="#ED1C24" strokeWidth="1.4314">
               <path d="M887.6 1124v2zM346.7 1124v2zM298.5 1124v2zM395.9 1124v2zM445 1124v2zM494.2 1124v2zM543.4 1124v2zM592.6 1124v2zM641.7 1124v2zM690.9 1124v2zM936.8 1124v2zM986 1124v2zM1035.1 1124v2zM1084.3 1124v2zM740.1 1124v2zM789.3 1124v2zM838.4 1124v2z" />

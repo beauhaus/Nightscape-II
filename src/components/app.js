@@ -18,29 +18,29 @@ const rightboundCars = [
     x: "-70",
     y: "714"
   },
-  {
-    id: "103right",
-    name: "car103right",
-    width: "65",
-    height: "0.5",
-    x: "-70",
-    y: "714"
-  },
-  {
-    id: "104right",
-    name: "car104right",
-    width: "65",
-    height: "0.5",
-    x: "-70",
-    y: "714"
-  }, {
-    id: "105right",
-    name: "car105right",
-    width: "65",
-    height: "0.5",
-    x: "-70",
-    y: "714"
-  }
+  // {
+  //   id: "103right",
+  //   name: "car103right",
+  //   width: "65",
+  //   height: "0.5",
+  //   x: "-70",
+  //   y: "714"
+  // },
+  // {
+  //   id: "104right",
+  //   name: "car104right",
+  //   width: "65",
+  //   height: "0.5",
+  //   x: "-70",
+  //   y: "714"
+  // }, {
+  //   id: "105right",
+  //   name: "car105right",
+  //   width: "65",
+  //   height: "0.5",
+  //   x: "-70",
+  //   y: "714"
+  // }
 ]
 
 const leftboundCars = [
@@ -68,21 +68,21 @@ const leftboundCars = [
       x: "-70",
       y: "714"
     },
-    {
-      id: "104left",
-      name: "car104left",
-      width: "65",
-      height: "0.5",
-      x: "-70",
-      y: "714"
-    }, {
-      id: "105left",
-      name: "car105left",
-      width: "65",
-      height: "0.5",
-      x: "-70",
-      y: "714"
-    }
+    // {
+    //   id: "104left",
+    //   name: "car104left",
+    //   width: "65",
+    //   height: "0.5",
+    //   x: "-70",
+    //   y: "714"
+    // }, {
+    //   id: "105left",
+    //   name: "car105left",
+    //   width: "65",
+    //   height: "0.5",
+    //   x: "-70",
+    //   y: "714"
+    // }
   ]
   
   
