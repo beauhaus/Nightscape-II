@@ -14,11 +14,6 @@ const StarsSVG = styled.svg`
   bottom: 0;
   width: 100%;
   height: 100%;
-  .shoot {
-    /* stroke-width: 4px;
-    stroke: fuchsia; */
-  }
-  
 `;
 
 class Stars extends Component {
@@ -28,31 +23,9 @@ class Stars extends Component {
       init: 'state',
       // profile: props.pageStyles
     };
-    this.shootAnimation = this.shootAnimation.bind(this);
-    this.logger = this.logger.bind(this);
-    this.myStars = [];
+  
   }
-  shootAnimation(tl, target) {
-  // console.log("tgt2: ", target);  
-    tl.set(target, {autoAlpha: 0})
-      .to(target, 3, {autoAlpha: 1, ease: Power1.easeInOut})
-      .call(this.logger, [this.myStar]);
-  }
-
-  logger(tgt) {
-    console.log(`${tgt} just ran!~`)
-  } 
-componentDidMount() {
-  // this.myRightboundCars.forEach(thing => {
-//     const tl = new TimelineMax({
-//       repeat: -1,
-//       yoyo: true
-//     });
-//   // });  
-//   var target = this.myStar;
-//   console.log("tgt: ", target);
-//   this.shootAnimation(tl, target);
-}
+  
   render() {
 
     return (

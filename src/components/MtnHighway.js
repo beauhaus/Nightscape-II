@@ -4,16 +4,12 @@ import styled from 'styled-components';
 import Stars from './Stars.js';
 
 
-// console.log("stars: ", Stars)
 const random = (min, max) =>{
   if (max == null) { max = min; min = 0; }
   if (min > max) { var tmp = min; min = max; max = tmp; }
   return min + (max - min) * Math.random();
 }
 
-/*
-<div id="cloud" style="border: 1px solid coral; box-shadow: rgb(51, 171, 250) 52vw 31vh 36vmin 12vmin;"></div>
-*/
 
 const MtnHighwayDiv = styled.div`
 .mtns {
@@ -98,10 +94,10 @@ const MtnHighwayDiv = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
-  display: grid;
+  /* display: grid;
   grid-template-columns: 25vw 50vw 25vw;
   grid-template-rows: 20vh 60vh 20vh;
-  z-index: 1;
+  z-index: 1; */
    .car-element {
     filter: url(#car-blur);
     position: absolute;
@@ -119,7 +115,6 @@ class MtnHighway extends Component {
     this.rightboundCarsDB = this.props.rightboundCarsDB;
     this.leftboundCarsDB = this.props.leftboundCarsDB;
     
-    // console.log("t.p> MtnHighway ", this.props)
     this.myRightboundCars = [];
     this.myLeftboundCars = [];
   }
@@ -184,28 +179,28 @@ class MtnHighway extends Component {
   }
 
   render() {
-const {rightboundCarsDB, leftboundCarsDB} = this;
+    const {rightboundCarsDB, leftboundCarsDB} = this;
 
     return (
       <MtnHighwayDiv className="mtn-highway">
   
       {/**
   */}
-      <svg className="connect-moon" xmlns="http://www.w3.org/2000/svg" viewBox="00 -40 2040 1000" >
-    <linearGradient id="z" x1="337.6553" x2="442.4339" y1="107.0879" y2="197.0022" gradientUnits="userSpaceOnUse">
-    <stop offset="0" stopColor="#f8733e"/>
-    <stop offset=".6" stopColor="#9b6527"stopOpacity=".4"/>
-    <stop offset=".7" stopColor="#9b6527"stopOpacity=".3"/>
-    <stop offset=".75" stopColor="#9b6527" stopOpacity=".25"/>
-    <stop offset=".85" stopColor="#9b6527" stopOpacity="0"/>
-    </linearGradient>
-    <filter id="moonBlur" x="-50%" y="-50%" width="200%" height="200%">
-    <feGaussianBlur in="SourceGraphic" stdDeviation="25" />
-  </filter>
+        <svg className="connect-moon" xmlns="http://www.w3.org/2000/svg" viewBox="00 -40 2040 1000" >
+          <linearGradient id="z" x1="337.6553" x2="442.4339" y1="107.0879" y2="197.0022" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor="#f8733e" />
+            <stop offset=".6" stopColor="#9b6527" stopOpacity=".4" />
+            <stop offset=".7" stopColor="#9b6527" stopOpacity=".3" />
+            <stop offset=".75" stopColor="#9b6527" stopOpacity=".25" />
+            <stop offset=".85" stopColor="#9b6527" stopOpacity="0" />
+          </linearGradient>
+          <filter id="moonBlur" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="25" />
+          </filter>
 
-    <circle cx="383" cy="146" r="102" fill="none" strokeWidth="24" stroke="#fde5c8" filter="url(#moonBlur)" />
-    <circle cx="383" cy="146" r="69" fill="url(#z)" />
-</svg>
+          <circle cx="383" cy="146" r="102" fill="none" strokeWidth="24" stroke="#fde5c8" filter="url(#moonBlur)" />
+          <circle cx="383" cy="146" r="69" fill="url(#z)" />
+        </svg>
   
 
 
@@ -227,8 +222,18 @@ const {rightboundCarsDB, leftboundCarsDB} = this;
           <div id="cloud5" className="cumulus"></div>
         </div>
 
+{/**
 
-        <svg width="1440px" height="900px"  xlinkHref="http://www.w3.org/2000/svg">
+  
+ */}
+        <svg 
+        className="mtn-scene"
+        width="100vw"
+        height="100vh"
+        xlinkHref="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 900"
+        preserveAspectRatio="none"
+        >
           <linearGradient id="bg-grad" x1="1440" x2="0" y1="900" y2="40" gradientUnits="userSpaceOnUse">
             <stop offset="0" stopColor="#333" />
             <stop offset="0.4" stopColor="#2a2a2a" />
@@ -237,7 +242,10 @@ const {rightboundCarsDB, leftboundCarsDB} = this;
       </linearGradient>
       <path  className="bg" fill="url(#bg-grad)"  stroke="#b2b2b2" d="M-.5.5h1440v900H-.5z"/>
       <Stars/>    
+      {/**
 
+  
+ */}
           <g className="mtns">
 
             <g className="mtns-level-1">
@@ -403,16 +411,13 @@ const {rightboundCarsDB, leftboundCarsDB} = this;
                   ref={el => {
                     this.myRightboundCars[idx] = el
                   }}
-                  // width={`${item.width}`}
-                  // height={`${item.height}`}
+                  
                   width="65px"
                   height="0.5px"
 
                   x="-70px"
                   y="714px"
-                  // x={`${item.x}`}
-                  // y={`${item.y}`}
-
+                  
                   fill="url(#car-grad-right)"
                 />
               ))}
@@ -470,7 +475,7 @@ const {rightboundCarsDB, leftboundCarsDB} = this;
           </g>
 
 
-          <path  id="water" fill="#707070" d="M0 720h1440v180H0z" />
+          <path  id="water" fill="#888" d="M0 720h1440v180H0z" />
 
           <g >
             <path stroke="#000" d="M298 1124.5h786.8l-.4 6.9c-.3-3.7-11.2-6.6-24.7-6.6s-24.4 2.8-24.7 6.8h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.7-24.7-6.7s-24.4 2.7-24.7 6.7h.1c-.3-4-11.2-6.8-24.7-6.8s-24.4 3-24.7 6.7l2.5-7z" />

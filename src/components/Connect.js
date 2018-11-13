@@ -10,8 +10,10 @@ const ConnectPageCompDiv = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
+  height: 100vh;
+  width: 100vw;
   overflow: hidden;
   display: grid;
   grid-template-columns: 25vw 50vw 25vw;
