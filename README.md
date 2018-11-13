@@ -16,7 +16,7 @@ Use of ["Sample without replacement"](https://en.wikipedia.org/wiki/Simple_rando
 -----------------
 
 
-![Desktop Wireframe draft](./readmeImg/nightscapeII.jpg "desktop wireframe draft") 
+![NightScape II](https://raw.githubusercontent.com/beauhaus/react-gsap-nightscape/master/readmeImg/nightScapeII.jpg "NightScape II") 
 
 ### Acknowledgement
 
